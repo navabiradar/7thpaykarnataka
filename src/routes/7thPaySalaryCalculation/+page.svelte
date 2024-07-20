@@ -1,10 +1,22 @@
 <script>
+
+  let da = 31 ;
+  let fixationRate = 27.5 ; 
+  let newDA = 0 ;
   
   let formValues = {
-    "basicPay" : 0,
+    "oldPay" : 0,
+    "newPay" : 0,
+    "newPayAug" : 0,
     "payScale" : "Select",
     "hraGroup" : "",
     "group" : "",
+  }
+
+  function calculateSalary() {
+        let newPayCalculated = formValues.oldPay + Math.round((formValues.oldPay*da)/100) + Math.round((formValues.oldPay*fixationRate)/100)
+
+        formValues.newPay = newPayCalculated ;
   }
 
 </script>
@@ -54,7 +66,7 @@
             <div class="mb-3">
               <label class="form-label required" for="">Present Basic Pay/ಈಗಿನ ಮೂಲ ವೇತನ</label>
               <div>
-                <input type="number" class="form-control" placeholder="Curren Basic Pay">
+                <input type="number" class="form-control" bind:value={formValues.oldPay} placeholder="Curren Basic Pay">
                 <small class="form-hint">
                     ಈಗಿನ ಮೂಲ ವೇತನವನ್ನು ಸರಿಯಾಗಿ ನಮೂದಿಸಿ.
                 </small>
@@ -97,7 +109,7 @@
           </div>
           <div class="card-footer text-end">
               <button type="submit" class="btn btn-danger">Clear</button>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary" on:click={calculateSalary}>Submit</button>
           </div>
         </div>
     </div>
@@ -121,7 +133,7 @@
                     <tr>
                       <td>{formValues.payScale}</td>
                       <td >
-                        UI Designer, Training
+                        {formValues.payScale}
                       </td>
                       
                     
@@ -129,7 +141,57 @@
                     </tr>
                   </tbody>
                 </table>
-              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table
+                    class="table table-vcenter table-bordered table-wrap">
+                <thead>
+                  <tr>
+                    <th>Current Pay /ಈಗೀನ ವೇತನ </th>
+                    <th>New Pay /ಪರಿಷ್ಕ್ರತ ವೇತನ As on 01-07-2022 </th>
+                    <th>New Pay /ಪರಿಷ್ಕ್ರತ ವೇತನ As on 01-08-2024 </th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{formValues.oldPay}</td>
+                    <td>{formValues.newPay}</td>
+                    <td>{formValues.newPayAug}</td>
+                    
+                  
+                  
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-responsive">
+              <table
+                    class="table table-vcenter table-bordered table-wrap">
+                <thead>
+                  <tr>
+                    
+                    <th>DA/ತುಟ್ಟಿ ಭತ್ಯೆ </th>
+                    <th>HRA / ಮನೆ ಬಾಡಿಗೆ ಭತ್ಯೆ </th>
+                    <th>Medical Allowance/ ವೈದ್ಯಕೀಯ ಭತ್ಯೆ </th>
+                    <th>Gross Salary/ ಒಟ್ಟು ವೇತನ </th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{formValues.oldPay}</td>
+                    <td>{formValues.newPay}</td>
+                    <td>{formValues.newPayAug}</td>
+                    <td>{formValues.newPayAug}</td>
+                    
+                  
+                  
+                  </tr>
+                </tbody>
+              </table>
+            </div>
               
             
           </div>
