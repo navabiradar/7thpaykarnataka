@@ -4,7 +4,7 @@
     let fixationRate = 27.5 ; 
     let newDA = 8.75 ;
     let minPension = 13500 ;
-    let maxPension = 120600;
+    let maxPension = 80400;
     
     let formValues = {
       "oldPay" : 0,
