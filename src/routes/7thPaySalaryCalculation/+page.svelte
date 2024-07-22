@@ -239,7 +239,7 @@
 
             console.log(x)
 
-            formValues.newPayAug = payScaleData[Number(formValues.payScale)-1].scaleExtract[1]
+            // formValues.newPayAug = payScaleData[Number(formValues.payScale)-1].scaleExtract[1]
             return true
           }
         });
