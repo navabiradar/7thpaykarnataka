@@ -226,21 +226,20 @@
   function calculateSalary() {
         let newPayCalculated = formValues.oldPay + Math.round((formValues.oldPay*da)/100) + Math.round((formValues.oldPay*fixationRate)/100)
         
-        payScaleData[Number(formValues.payScale)-1].scaleExtract.forEach((x,i) => {
+        payScaleData[Number(formValues.payScale)-1].scaleExtract.forEach((x) => {
           if (newPayCalculated > payScaleData[Number(formValues.payScale)-1].max){
             formValues.newPay = payScaleData[Number(formValues.payScale)-1].max
             return true
           } else if(newPayCalculated < payScaleData[Number(formValues.payScale)-1].min){
             formValues.newPay = payScaleData[Number(formValues.payScale)-1].min
             return true
-          }
-          if (x > newPayCalculated){
-            let x2 = i
+          } else if ( newPayCalculated > x){
+            
             formValues.newPay = x
 
+            console.log(x)
 
-
-            formValues.newPayAug = payScaleData[Number(formValues.payScale)-1].scaleExtract[x2+2]
+            formValues.newPayAug = payScaleData[Number(formValues.payScale)-1].scaleExtract[1]
             return true
           }
         });
