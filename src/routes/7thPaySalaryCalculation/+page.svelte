@@ -225,9 +225,35 @@
 
   function calculateSalary() {
         let newPayCalculated = formValues.oldPay + Math.round((formValues.oldPay*da)/100) + Math.round((formValues.oldPay*fixationRate)/100)
+        
+        payScaleData[Number(formValues.payScale)-1].scaleExtract.forEach((x,i) => {
+          if (newPayCalculated > payScaleData[Number(formValues.payScale)-1].max){
+            formValues.newPay = payScaleData[Number(formValues.payScale)-1].max
+            return true
+          } else if(newPayCalculated < payScaleData[Number(formValues.payScale)-1].min){
+            formValues.newPay = payScaleData[Number(formValues.payScale)-1].min
+            return true
+          }
+          if (x > newPayCalculated){
+            let x2 = i
+            formValues.newPay = x
+
+
+
+            formValues.newPayAug = payScaleData[Number(formValues.payScale)-1].scaleExtract[x2+2]
+            return true
+          }
+        });
+        
+
+
+
+
+
+        
         formValues.seventhpayScale = payScaleData[Number(formValues.payScale)-1].seventhPay
         formValues.sixthpayScale = payScaleData[Number(formValues.payScale)-1].sixthPay
-        formValues.newPay = newPayCalculated ;
+        
   }
 
 </script>
