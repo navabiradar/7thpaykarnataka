@@ -13,6 +13,12 @@
     "group" : "",
   }
 
+  let payScaleData = [
+    {
+      
+    }
+  ]
+
   function calculateSalary() {
         let newPayCalculated = formValues.oldPay + Math.round((formValues.oldPay*da)/100) + Math.round((formValues.oldPay*fixationRate)/100)
 
