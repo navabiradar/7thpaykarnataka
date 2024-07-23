@@ -2,7 +2,13 @@
 
   let da = 31 ;
   let fixationRate = 27.5 ; 
-  let newDA = 0 ;
+  let newDA = 8.75 ;
+
+  let hraRates = {
+    "A" : 20,
+    "B" : 15,
+    "C" : 7.5
+  }
   
   let formValues = {
     "oldPay" : 0,
@@ -11,12 +17,15 @@
     "payScale" : "Select",
     "seventhpayScale" : "",
     "sixthpayScale" : "",
-    "hraGroup" : "",
-    "group" : "",
+    "hraGroup" : "C",
+    "group" : "A",
+    "daPay" : 0,
+    "hraPay" : 0,
+    "mediAll" : 0,
+    "gross" : 0,
   }
 
-  let scaleExtract = [27000,27650,28300,28950,29600,29600,30325,31050,31775,32500,32500,33300,34100,34900,35700,35700,36600,37500,38400,39300,39300,40300,41300,42300,43300,43300,44425,45550,46675,47800,47800,49050,50300,51550,52800,52800,54175,55550,56925,58300,58300,59800,61300,62800,64300,64300,65950,67600,69250,70900,72550,74200,74200,76100,78000,79900,81800,83700,85600,85600,87900,90200,92500,94800,97100,99400,99400,102100,104800,107500,110200,112900,115600,115600,118700,121800,124900,128000,131100,134200,134200,137700,141200,144700,148200,151700,155200,155200,159200,163200,167200,171200,175200,179200,179200,183700,188200,192700,197200,201700,206200,206200,211200,216200,221200,226200,231200,236200,241200] ;
-  
+  let scaleExtract = [27000, 27650, 28300, 28950, 29600, 30325, 31050, 31775, 32500, 33300, 34100, 34900, 35700, 36600, 37500, 38400, 39300, 40300, 41300, 42300, 43300, 44425, 45550, 46675, 47800, 49050, 50300, 51550, 52800, 54175, 55550, 56925, 58300, 59800, 61300, 62800, 64300, 65950, 67600, 69250, 70900, 72550, 74200, 76100, 78000, 79900, 81800, 83700, 85600, 87900, 90200, 92500, 94800, 97100, 99400, 102100, 104800, 107500, 110200, 112900, 115600, 118700, 121800, 124900, 128000, 131100, 134200, 137700, 141200, 144700, 148200, 151700, 155200, 159200, 163200, 167200, 171200, 175200, 179200, 183700, 188200, 192700, 197200, 201700, 206200, 211200, 216200, 221200, 226200, 231200, 236200, 241200] ;
 
   let payScaleData = [
      {
@@ -201,27 +210,57 @@
   function calculateSalary() {
         let newPayCalculated = formValues.oldPay + Math.round((formValues.oldPay*da)/100) + Math.round((formValues.oldPay*fixationRate)/100)
         
-        scaleExtract.forEach((x) => {
-          if (newPayCalculated > payScaleData[Number(formValues.payScale)-1].max){
-            formValues.newPay = payScaleData[Number(formValues.payScale)-1].max
-            return true
-          } else if(newPayCalculated < payScaleData[Number(formValues.payScale)-1].min){
-            formValues.newPay = payScaleData[Number(formValues.payScale)-1].min
-            return true
-          } else if (newPayCalculated <= x){
-            console.log(x)
-            return true
-          }
+        if (formValues.group == "C" || formValues.group == "D"){
+              formValues.mediAll = 500
+        } else{
+              formValues.mediAll = 0
+        }
+
+
+        scaleExtract.some(function(ele, index){
+            
+
+            if (newPayCalculated >= payScaleData[Number(formValues.payScale)-1].max){
+              formValues.newPay = payScaleData[Number(formValues.payScale)-1].max
+              formValues.newPayAug = scaleExtract[scaleExtract.indexOf(formValues.newPay)+2]
+              return true
+            } else if(newPayCalculated <= payScaleData[Number(formValues.payScale)-1].min){
+              formValues.newPay = payScaleData[Number(formValues.payScale)-1].min
+              formValues.newPayAug = formValues.newPay
+              return true
+            }else if(ele > newPayCalculated){
+              if (ele > payScaleData[Number(formValues.payScale)-1].max){
+                formValues.newPay = payScaleData[Number(formValues.payScale)-1].max
+                formValues.newPayAug = formValues.newPay
+                formValues.newPayAug = scaleExtract[index + 2]
+              } else if(ele < payScaleData[Number(formValues.payScale)-1].min){
+                formValues.newPay = payScaleData[Number(formValues.payScale)-1].min
+                formValues.newPayAug = formValues.newPay
+                formValues.newPayAug = scaleExtract[index + 2]
+              } else {
+                formValues.newPay = ele
+                formValues.newPayAug = scaleExtract[index + 2]
+                
+                 
+              }
+              return true;
+            }
+
+            
         });
         
 
 
 
-
+        
 
         
         formValues.seventhpayScale = payScaleData[Number(formValues.payScale)-1].seventhPay
         formValues.sixthpayScale = payScaleData[Number(formValues.payScale)-1].sixthPay
+
+        formValues.daPay = Math.round((formValues.newPayAug * newDA)/100);
+        formValues.hraPay = Math.round((formValues.newPayAug * hraRates["A"])/100);
+        formValues.gross = formValues.newPayAug+formValues.daPay+formValues.hraPay+formValues.mediAll ;
         
   }
 
@@ -250,7 +289,7 @@
               </div>
             </div>
             <div class="mb-3">
-              <label class="form-label required" for="">Present Basic Pay/ಈಗಿನ ಮೂಲ ವೇತನ</label>
+              <label class="form-label required" for="">01.07.2022 Basic Pay/01.07.2022 ಮೂಲ ವೇತನ</label>
               <div>
                 <input type="number" class="form-control" bind:value={formValues.oldPay} placeholder="Curren Basic Pay">
                 <small class="form-hint">
@@ -263,7 +302,7 @@
                 <div class="mb-3">
                   <label class="form-label" for="">Employee Group/ನೌಕರನ ವರ್ಗ</label>
                   <div>
-                    <select class="form-select">
+                    <select class="form-select" bind:value={formValues.group}>
                       <option value="A">A</option>
                       <option value="B">B</option>
                       <option value="C">C</option>
@@ -279,7 +318,7 @@
                 <div class="mb-3">
                   <label class="form-label" for="">HRA City Grade/ಮನೆ ಬಾಡಿಗೆ ಭತ್ಯೆ ವರ್ಗ</label>
                   <div>
-                    <select class="form-select">
+                    <select class="form-select" bind:value={formValues.hraGroup}>
                       <option>A</option>
                       <option>B</option>
                       <option>C</option>
@@ -367,10 +406,10 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{formValues.oldPay}</td>
-                    <td>{formValues.newPay}</td>
-                    <td>{formValues.newPayAug}</td>
-                    <td>{formValues.newPayAug}</td>
+                    <td>{formValues.daPay}</td>
+                    <td>{formValues.hraPay}</td>
+                    <td>{formValues.mediAll}</td>
+                    <td>{formValues.gross}</td>
                     
                   
                   
