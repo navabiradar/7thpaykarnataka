@@ -32,6 +32,12 @@
     }
   
   </script>
+
+<svelte:head>
+
+<title>7th Pay Pension Fixation Karnataka Government , Basic Pension Salary , Gross Pension </title>
+
+</svelte:head>
   
   <main>
       <div class="row row-card">

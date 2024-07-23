@@ -32,6 +32,10 @@
     }
   
   </script>
+
+  <svelte:head>
+    <title>Karnataka Government Family Pension Calculation , 7th Pay Family Pension</title>
+  </svelte:head>
   
   <main>
       <div class="row row-card">

@@ -273,11 +273,17 @@
         formValues.hraPay = Math.round((formValues.newPayAug * hraRates[tempHRA])/100);
         formValues.gross = formValues.newPayAug+formValues.daPay+formValues.hraPay+formValues.mediAll ;
         let mediAll = formValues.group == "C" || formValues.group == "D" ? 200 : 0
-        formValues.sxithgross = formValues.presentPay + Math.round((formValues.presentPay * oldDAJan)/100) + Math.round((formValues.presentPay * oldHraRates[tempHRA])/100) + mediAll
+        formValues.sxithgross = formValues.presentPay + Math.round((formValues.presentPay * oldDAJan)/100) + Math.round((formValues.presentPay * oldHraRates[tempHRA])/100) + mediAll + Math.round((formValues.presentPay * 17)/100)
         
   }
 
 </script>
+
+<svelte:head>
+
+  <title>7th Pay Salary Fixation Karnataka Government , Basic Salary , Gross Salary </title>
+
+</svelte:head>
 
 <main>
     <div class="row row-card">
