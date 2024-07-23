@@ -288,7 +288,7 @@
 <main>
     <div class="row row-card">
     <div class="col-md-4">
-        <div class="card">
+        <div class="card h-100">
           <div class="card-header">
             <h3 class="card-title">sixth Pay Details/6ನೇ ವೇತನ ಮಾಹಿತಿ</h3>
           </div>
@@ -386,7 +386,9 @@
                   </tbody>
                 </table>
             </div>
-
+            <div class="hr-text">
+              <span>New Pay and Old Pay / ಹಳೆಯ ಮತ್ತು ಹೊಸ ವೇತನ</span>
+            </div>
             <div class="table-responsive">
               <table
                     class="table table-vcenter table-bordered table-wrap">
@@ -409,6 +411,9 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <div class="hr-text">
+              <span>Allowance Details / ಭತ್ಯೆಗಳ ಮಾಹಿತಿ</span>
             </div>
             <div class="table-responsive">
               <table
@@ -436,7 +441,9 @@
                 </tbody>
               </table>
             </div>
-
+            <div class="hr-text">
+              <span>Comparision of Pay / ಹೊಸ ಮತ್ತು ಹಳೆಯ ವೇತನ ವ್ಯತ್ಯಾಸ</span>
+            </div>
             <div class="table-responsive">
               <table
                     class="table table-vcenter table-bordered table-wrap">
