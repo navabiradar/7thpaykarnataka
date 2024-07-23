@@ -3,6 +3,13 @@
   let da = 31 ;
   let fixationRate = 27.5 ; 
   let newDA = 8.75 ;
+  let oldDAJan = 42.50;
+
+  let oldHraRates = {
+    "A" : 24,
+    "B" : 16,
+    "C" : 8,
+  }
 
   let hraRates = {
     "A" : 20,
@@ -12,6 +19,7 @@
   
   let formValues = {
     "oldPay" : 0,
+    "presentPay": 0,
     "newPay" : 0,
     "newPayAug" : 0,
     "payScale" : "Select",
@@ -23,10 +31,11 @@
     "hraPay" : 0,
     "mediAll" : 0,
     "gross" : 0,
+    "sxithgross" : 0,
   }
 
   let scaleExtract = [27000, 27650, 28300, 28950, 29600, 30325, 31050, 31775, 32500, 33300, 34100, 34900, 35700, 36600, 37500, 38400, 39300, 40300, 41300, 42300, 43300, 44425, 45550, 46675, 47800, 49050, 50300, 51550, 52800, 54175, 55550, 56925, 58300, 59800, 61300, 62800, 64300, 65950, 67600, 69250, 70900, 72550, 74200, 76100, 78000, 79900, 81800, 83700, 85600, 87900, 90200, 92500, 94800, 97100, 99400, 102100, 104800, 107500, 110200, 112900, 115600, 118700, 121800, 124900, 128000, 131100, 134200, 137700, 141200, 144700, 148200, 151700, 155200, 159200, 163200, 167200, 171200, 175200, 179200, 183700, 188200, 192700, 197200, 201700, 206200, 211200, 216200, 221200, 226200, 231200, 236200, 241200] ;
-
+  let scaleExtractSixthPay = [17000, 17400, 17800, 18200, 18600, 19050, 19500, 19950, 20400, 20900, 21400, 21900, 22400, 22950, 23500, 24050, 24600, 25200, 25800, 26400, 27000, 27650, 28300, 28950, 29600, 30350, 31100, 31850, 32600, 33450, 34300, 35150, 36000, 36950, 37900, 38850, 39800, 40900, 42000, 43100, 44200, 45300, 46400, 47650, 48900, 50150, 51400, 52650, 53900, 55350, 56800, 58250, 59700, 61150, 62600, 64250, 65900, 67550, 69200, 70850, 72500, 74400, 76300, 78200, 80100, 82000, 83900, 86100, 88300, 90500, 92700, 94900, 97100, 99600, 102100, 104600, 107100, 109600, 112100, 114900, 117700, 120500, 123300, 126100, 128900, 132000, 135100, 138200, 141300, 144400, 147500, 150600]
   let payScaleData = [
      {
       "id" : 1,
@@ -60,7 +69,7 @@
       "id" : 5,
       "sixthPay" : "23500-550-24600-600-27000-650-29600-750-32600-850-36000-950-39800-1100-46400-1250-47650",
       "seventhPay" : "37500-900-39300-1000-43300-1125-47800-1250-52800-1375-58300-1500-64300-1650-74200-1900-76100",
-      "max" : 46675,
+      "max" : 76100,
       "min" : 37500,
         },
      {
@@ -208,6 +217,8 @@
   
 
   function calculateSalary() {
+        let oldPayIndex = scaleExtractSixthPay.indexOf(formValues.presentPay);
+        formValues.oldPay = scaleExtractSixthPay[oldPayIndex-2]
         let newPayCalculated = formValues.oldPay + Math.round((formValues.oldPay*da)/100) + Math.round((formValues.oldPay*fixationRate)/100)
         
         if (formValues.group == "C" || formValues.group == "D"){
@@ -257,10 +268,12 @@
         
         formValues.seventhpayScale = payScaleData[Number(formValues.payScale)-1].seventhPay
         formValues.sixthpayScale = payScaleData[Number(formValues.payScale)-1].sixthPay
-
+        let tempHRA = formValues.hraGroup
         formValues.daPay = Math.round((formValues.newPayAug * newDA)/100);
-        formValues.hraPay = Math.round((formValues.newPayAug * hraRates["A"])/100);
+        formValues.hraPay = Math.round((formValues.newPayAug * hraRates[tempHRA])/100);
         formValues.gross = formValues.newPayAug+formValues.daPay+formValues.hraPay+formValues.mediAll ;
+        let mediAll = formValues.group == "C" || formValues.group == "D" ? 200 : 0
+        formValues.sxithgross = formValues.presentPay + Math.round((formValues.presentPay * oldDAJan)/100) + Math.round((formValues.presentPay * oldHraRates[tempHRA])/100) + mediAll
         
   }
 
@@ -289,9 +302,9 @@
               </div>
             </div>
             <div class="mb-3">
-              <label class="form-label required" for="">01.07.2022 Basic Pay/01.07.2022 ಮೂಲ ವೇತನ</label>
+              <label class="form-label required" for="">Present Basic Pay/ಈಗಿನ ಮೂಲ ವೇತನ</label>
               <div>
-                <input type="number" class="form-control" bind:value={formValues.oldPay} placeholder="Curren Basic Pay">
+                <input type="number" class="form-control" bind:value={formValues.presentPay} placeholder="Curren Basic Pay">
                 <small class="form-hint">
                     ಈಗಿನ ಮೂಲ ವೇತನವನ್ನು ಸರಿಯಾಗಿ ನಮೂದಿಸಿ.
                 </small>
@@ -373,7 +386,7 @@
                     class="table table-vcenter table-bordered table-wrap">
                 <thead>
                   <tr>
-                    <th>Current Pay /ಈಗೀನ ವೇತನ </th>
+                    <th>6th Pay As On 01-07-2022 / ವೇತನ 01-07-2022 </th>
                     <th>New Pay /ಪರಿಷ್ಕ್ರತ ವೇತನ As on 01-07-2022 </th>
                     <th>New Pay /ಪರಿಷ್ಕ್ರತ ವೇತನ As on 01-08-2024 </th>
                     
@@ -410,6 +423,30 @@
                     <td>{formValues.hraPay}</td>
                     <td>{formValues.mediAll}</td>
                     <td>{formValues.gross}</td>
+                    
+                  
+                  
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="table-responsive">
+              <table
+                    class="table table-vcenter table-bordered table-wrap">
+                <thead>
+                  <tr>
+                    <th>6th Pay Gross / ಒಟ್ಟು ವೇತನ </th>
+                    <th>7th Pay Gross / ಒಟ್ಟು ವೇತನ </th>
+                    <th>Diffence Amount / ವ್ಯತ್ಯಾಸ ಮೊತ್ತ </th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{formValues.sxithgross}</td>
+                    <td>{formValues.gross}</td>
+                    <td>{formValues.gross - formValues.sxithgross}</td>
                     
                   
                   
