@@ -32,6 +32,45 @@
     "mediAll" : 0,
     "gross" : 0,
     "sxithgross" : 0,
+    "sixthDA" : 0,
+    "sixthPayConvert": 0,
+  }
+
+  let sixthPay2022 = {
+    "basicPay" : 0,
+    "da" : 0,
+    "hra" : 0,
+    "medAll" : 0,
+    "IR": 0,
+    "gross" : 0,
+  }
+
+  let sevenPay2022 = {
+    "basicPay" : 0,
+    "da" : 0,
+    "hra" : 0,
+    "medAll" : 0,
+    
+    "gross" : 0,
+
+  }
+
+  let sixthPay2024 = {
+    "basicPay" : 0,
+    "da" : 0,
+    "hra" : 0,
+    "medAll" : 0,
+    "IR": 0,
+    "gross" : 0,
+  }
+
+  let sevenPay2024 = {
+    "basicPay" : 0,
+    "da" : 0,
+    "hra" : 0,
+    "medAll" : 0,
+    
+    "gross" : 0,
   }
 
   let scaleExtract = [27000, 27650, 28300, 28950, 29600, 30325, 31050, 31775, 32500, 33300, 34100, 34900, 35700, 36600, 37500, 38400, 39300, 40300, 41300, 42300, 43300, 44425, 45550, 46675, 47800, 49050, 50300, 51550, 52800, 54175, 55550, 56925, 58300, 59800, 61300, 62800, 64300, 65950, 67600, 69250, 70900, 72550, 74200, 76100, 78000, 79900, 81800, 83700, 85600, 87900, 90200, 92500, 94800, 97100, 99400, 102100, 104800, 107500, 110200, 112900, 115600, 118700, 121800, 124900, 128000, 131100, 134200, 137700, 141200, 144700, 148200, 151700, 155200, 159200, 163200, 167200, 171200, 175200, 179200, 183700, 188200, 192700, 197200, 201700, 206200, 211200, 216200, 221200, 226200, 231200, 236200, 241200] ;
@@ -257,6 +296,7 @@
               return true;
             }
 
+
             
         });
         
@@ -275,6 +315,32 @@
         let mediAll = formValues.group == "C" || formValues.group == "D" ? 200 : 0
         formValues.sxithgross = formValues.presentPay + Math.round((formValues.presentPay * oldDAJan)/100) + Math.round((formValues.presentPay * oldHraRates[tempHRA])/100) + mediAll + Math.round((formValues.presentPay * 17)/100)
         
+
+            sixthPay2024.basicPay = formValues.presentPay
+            sixthPay2022.basicPay = formValues.oldPay
+            sixthPay2024.da = Math.round((sixthPay2024.basicPay * oldDAJan)/100)
+            sixthPay2022.da = Math.round((sixthPay2022.basicPay * da)/100)
+            sixthPay2024.hra = Math.round((sixthPay2024.basicPay * oldHraRates[tempHRA])/100)
+            sixthPay2022.hra = Math.round((sixthPay2022.basicPay * oldHraRates[tempHRA])/100)
+            sixthPay2024.medAll = formValues.group == "C" || formValues.group == "D" ? 200 : 0
+            sixthPay2022.medAll = formValues.group == "C" || formValues.group == "D" ? 200 : 0
+            sixthPay2024.IR = Math.round((sixthPay2024.basicPay * 17)/100)
+            sixthPay2022.IR = Math.round((sixthPay2022.basicPay * 17)/100)
+            sixthPay2024.gross = sixthPay2024.basicPay + sixthPay2024.da + sixthPay2024.hra + sixthPay2024.medAll + sixthPay2024.IR
+            sixthPay2022.gross = sixthPay2022.basicPay + sixthPay2022.da + sixthPay2022.hra + sixthPay2022.medAll + sixthPay2022.IR
+            
+
+            sevenPay2024.basicPay = formValues.newPayAug
+            sevenPay2022.basicPay = formValues.newPay
+            sevenPay2024.da = Math.round((sevenPay2024.basicPay * newDA)/100)
+            sevenPay2022.da = Math.round((sevenPay2022.basicPay * 0)/100)
+            sevenPay2024.hra = Math.round((sevenPay2024.basicPay * hraRates[tempHRA])/100)
+            sevenPay2022.hra = Math.round((sevenPay2022.basicPay * hraRates[tempHRA])/100)
+            sevenPay2024.medAll = formValues.group == "C" || formValues.group == "D" ? 500 : 0
+            sevenPay2022.medAll = formValues.group == "C" || formValues.group == "D" ? 500 : 0
+            sevenPay2024.gross = sevenPay2024.basicPay + sevenPay2024.da + sevenPay2024.hra + sevenPay2024.medAll
+            sevenPay2022.gross = sevenPay2022.basicPay + sevenPay2022.da + sevenPay2022.hra + sevenPay2022.medAll
+            
   }
 
 </script>
@@ -387,9 +453,9 @@
                 </table>
             </div>
             <div class="hr-text">
-              <span>New Pay and Old Pay / ಹಳೆಯ ಮತ್ತು ಹೊಸ ವೇತನ</span>
+              <span>Comparision of New Pay and Old Pay / ಹಳೆಯ ಮತ್ತು ಹೊಸ ವೇತನ</span>
             </div>
-            <div class="table-responsive">
+            <!-- <div class="table-responsive">
               <table
                     class="table table-vcenter table-bordered table-wrap">
                 <thead>
@@ -466,9 +532,84 @@
                   </tr>
                 </tbody>
               </table>
+            </div> -->
+            <div class="col-12">
+            <div class="table-responsive">
+              <table class="table table-vcenter table-bordered table-wrap">
+                <thead>
+                  <tr>
+                    <th>ವೇತನ ಆಯೋಗದ ಹೆಸರು</th>
+                    <th class="text-wrap">6ನೇ ವೇತನ ಆಯೋಗ /6th Pay Commission 01.07.2022</th>
+                    <th class="text-wrap">7ನೇ ವೇತನ ಆಯೋಗ /7th Pay Commission 01.07.2022</th>
+                    <th class="text-wrap">6ನೇ ವೇತನ ಆಯೋಗ /6th Pay Commission 01.07.2024</th>
+                    <th class="text-wrap">7ನೇ ವೇತನ ಆಯೋಗ /7th Pay Commission 01.08.2024</th>
+                    <th class="text-wrap">ವ್ಯತ್ಯಾಸ ವೇತನ 01.08.2024 /Difference of Pay</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Basic Pay/ ಮೂಲ ವೇತನ</th>
+                    <td>{sixthPay2022.basicPay}</td>
+                    <td>{sevenPay2022.basicPay}</td>
+                    <td>{sixthPay2024.basicPay}</td>
+                    <td>{sevenPay2024.basicPay}</td>
+                    <td>{sevenPay2024.basicPay - sixthPay2024.basicPay}</td>
+                    
+                  </tr>
+                  
+                  <tr>
+                    <th>Dearness Allowance/ ತುಟ್ಟಿ ಭತ್ಯೆ</th>
+                    <td>{sixthPay2022.da}</td>
+                    <td>{sevenPay2022.da}</td>
+                    <td>{sixthPay2024.da}</td>
+                    <td>{sevenPay2024.da}</td>
+                    <td>{sevenPay2024.da - sixthPay2024.da}</td>
+                    
+                  </tr>
+                  <tr>
+                    <th>House Rent Allowance/ ಮನೆ ಬಾಡಿಗೆ ಭತ್ಯೆ</th>
+                    <td>{sixthPay2022.hra}</td>
+                    <td>{sevenPay2022.hra}</td>
+                    <td>{sixthPay2024.hra}</td>
+                    <td>{sevenPay2024.hra}</td>
+                    <td>{sevenPay2024.hra - sixthPay2024.hra}</td>
+
+                    
+                  </tr>
+                  <tr>
+                    <th>Medical Allowance / ವೈದ್ಯಕೀಯ ಭತ್ಯೆ</th>
+                    <td>{sixthPay2022.medAll}</td>
+                    <td>{sevenPay2022.medAll}</td>
+                    <td>{sixthPay2024.medAll}</td>
+                    <td>{sevenPay2024.medAll}</td>
+                    <td>{sevenPay2024.medAll - sixthPay2024.medAll}</td>
+                    
+                  </tr>
+                  <tr>
+                    <th>Interim Relief / ತಾತ್ಕಾಲಿಕ ಪರಿಹಾರ</th>
+                    <td>{sixthPay2022.IR}</td>
+                    <td>NA</td>
+                    <td>{sixthPay2024.IR}</td>
+                    <td>NA</td>
+                    <td>{0 - sixthPay2024.IR}</td>
+                    
+                  </tr>
+                  <tr>
+                    <th>Gross Salary / ಒಟ್ಟು ವೇತನ</th>
+                    <td>{sixthPay2022.gross}</td>
+                    <td>{sevenPay2022.gross}</td>
+                    <td>{sixthPay2024.gross}</td>
+                    <td>{sevenPay2024.gross}</td>
+                    <td>{sevenPay2024.gross - sixthPay2024.gross}</td>
+
+                    
+                  </tr>
+                </tbody>
+              </table>
             </div>
               
-            
+          </div>
           </div>
           
         </div>
