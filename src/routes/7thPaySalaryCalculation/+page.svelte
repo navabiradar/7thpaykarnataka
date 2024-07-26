@@ -461,11 +461,16 @@
 										<option>C</option>
 									</select>
 									<small class="form-hint">
-										ನೀವು ವೇತನ ಪಡೆಯುವ ಕಚೇರಿಯ ಯಾವ ವರ್ಗಕ್ಕೆ ಸೇರುತ್ತದೆ ಎಂದು ಆಯ್ಕೆ ಮಾಡಿ.
+										ನೀವು ವೇತನ ಪಡೆಯುವ ಕಚೇರಿಯು ಯಾವ ವರ್ಗಕ್ಕೆ ಸೇರುತ್ತದೆ ಎಂದು ಆಯ್ಕೆ ಮಾಡಿ.
 									</small>
 								</div>
 							</div>
 						</div>
+					</div>
+					<div class="mb-3">
+						<small class="form-hint text-justify">** ಈ ವೆಬ್‌ಸೈಟ್ ನಲ್ಲಿ 7 ನೇ ವೇತನಕ್ಕಾಗಿ ಅಂದಾಜು ವೇತನವನ್ನು ಲೆಕ್ಕಹಾಕಬಹುದು. ಇದು ಮಾನ್ಯ ಸರಕಾರದ ಅಧಿಕೃತ ವೆಬ್‌ ಸೈಟ್‌ ಆಗಿರುವುದಿಲ್ಲ. </small>
+						<small class="form-hint text-justify">** ಈ ವೆಬ್‌ಸೈಟ್ ನಲ್ಲಿ ತುಟ್ಟಿ ಭತ್ಯೆಯಾನ್ನು Jul-2022 - 0% , Jan-2023 - 2.88%, Jul-2023 - 2.88%, Jan-2024 - 2.88% ಒಟ್ಟು ತುಟ್ಟಿ ಭತ್ಯೆ - 8.75% ಎಂದು ಅಂದಾಜು ಪರಿಗಣಿಸಲಾಗಿದೆ. ಮಾನ್ಯ ಘನ ಸರಕಾರದ ಯಾವುದೇ ಅಧಿಕೃತ ಆದೇಶವಿರುವುದಿಲ್ಲ. </small>
+						
 					</div>
 				</div>
 				<div class="card-footer text-end">
@@ -484,8 +489,8 @@
 						<table class="table table-vcenter table-bordered table-wrap">
 							<thead>
 								<tr>
-									<th>Current Pay Scale/ಈಗೀನ ವೇತನ ಶ್ರೇಣಿ</th>
-									<th>New Pay Scale/ಪರಿಷ್ಕ್ರತ ವೇತನ ಶ್ರೇಣಿ</th>
+									<th class="text-wrap">Current Pay Scale/ಈಗೀನ ವೇತನ ಶ್ರೇಣಿ</th>
+									<th class="text-wrap">New Pay Scale/ಪರಿಷ್ಕ್ರತ ವೇತನ ಶ್ರೇಣಿ</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -506,9 +511,9 @@
 							  class="table table-vcenter table-bordered table-wrap">
 						  <thead>
 							<tr>
-							  <th>7th Pay As on 01.07.2022 / 7ನೇ ವೇತನ 01.07.2022 </th>
-							  <th>ಕಾಲಿಕ ವೇತನ ಬಡ್ತಿ Jan/Jul 2023 </th>
-							  <th>ಕಾಲಿಕ ವೇತನ ಬಡ್ತಿ Jan/Jul 2024 </th>
+							  <th class="text-wrap">7th Pay As on 01.07.2022 / 7ನೇ ವೇತನ 01.07.2022 </th>
+							  <th class="text-wrap">ಕಾಲಿಕ ವೇತನ ಬಡ್ತಿ Jan/Jul 2023 </th>
+							  <th class="text-wrap">ಕಾಲಿಕ ವೇತನ ಬಡ್ತಿ Jan/Jul 2024 </th>
 							  
 							</tr>
 						  </thead>
@@ -618,52 +623,52 @@
 								<tbody>
 									<tr>
 										<th>Basic Pay/ ಮೂಲ ವೇತನ</th>
-										<td>{sixthPay2022.basicPay}</td>
-										<td>{sevenPay2022.basicPay}</td>
-										<td>{sixthPay2024.basicPay}</td>
-										<td>{sevenPay2024.basicPay}</td>
-										<td>{sevenPay2024.basicPay - sixthPay2024.basicPay}</td>
+										<td>₹. {sixthPay2022.basicPay}</td>
+										<td>₹. {sevenPay2022.basicPay}</td>
+										<td>₹. {sixthPay2024.basicPay}</td>
+										<td>₹. {sevenPay2024.basicPay}</td>
+										<td>₹. {sevenPay2024.basicPay - sixthPay2024.basicPay}</td>
 									</tr>
 
 									<tr>
 										<th>Dearness Allowance/ ತುಟ್ಟಿ ಭತ್ಯೆ</th>
-										<td>{sixthPay2022.da}</td>
-										<td>{sevenPay2022.da}</td>
-										<td>{sixthPay2024.da}</td>
-										<td>{sevenPay2024.da}</td>
-										<td>{sevenPay2024.da - sixthPay2024.da}</td>
+										<td>₹. {sixthPay2022.da}</td>
+										<td>₹. {sevenPay2022.da}</td>
+										<td>₹. {sixthPay2024.da}</td>
+										<td>₹. {sevenPay2024.da}</td>
+										<td>₹. {sevenPay2024.da - sixthPay2024.da}</td>
 									</tr>
 									<tr>
 										<th>House Rent Allowance/ ಮನೆ ಬಾಡಿಗೆ ಭತ್ಯೆ</th>
-										<td>{sixthPay2022.hra}</td>
-										<td>{sevenPay2022.hra}</td>
-										<td>{sixthPay2024.hra}</td>
-										<td>{sevenPay2024.hra}</td>
-										<td>{sevenPay2024.hra - sixthPay2024.hra}</td>
+										<td>₹. {sixthPay2022.hra}</td>
+										<td>₹. {sevenPay2022.hra}</td>
+										<td>₹. {sixthPay2024.hra}</td>
+										<td>₹. {sevenPay2024.hra}</td>
+										<td>₹. {sevenPay2024.hra - sixthPay2024.hra}</td>
 									</tr>
 									<tr>
 										<th>Medical Allowance / ವೈದ್ಯಕೀಯ ಭತ್ಯೆ</th>
-										<td>{sixthPay2022.medAll}</td>
-										<td>{sevenPay2022.medAll}</td>
-										<td>{sixthPay2024.medAll}</td>
-										<td>{sevenPay2024.medAll}</td>
-										<td>{sevenPay2024.medAll - sixthPay2024.medAll}</td>
+										<td>₹. {sixthPay2022.medAll}</td>
+										<td>₹. {sevenPay2022.medAll}</td>
+										<td>₹. {sixthPay2024.medAll}</td>
+										<td>₹. {sevenPay2024.medAll}</td>
+										<td>₹. {sevenPay2024.medAll - sixthPay2024.medAll}</td>
 									</tr>
 									<tr>
 										<th>Interim Relief / ತಾತ್ಕಾಲಿಕ ಪರಿಹಾರ</th>
-										<td>{sixthPay2022.IR}</td>
+										<td>₹. {sixthPay2022.IR}</td>
 										<td>NA</td>
-										<td>{sixthPay2024.IR}</td>
+										<td>₹. {sixthPay2024.IR}</td>
 										<td>NA</td>
-										<td>{0 - sixthPay2024.IR}</td>
+										<td>₹. {0 - sixthPay2024.IR}</td>
 									</tr>
 									<tr>
 										<th>Gross Salary / ಒಟ್ಟು ವೇತನ</th>
-										<td>{sixthPay2022.gross}</td>
-										<td>{sevenPay2022.gross}</td>
-										<td>{sixthPay2024.gross}</td>
-										<td>{sevenPay2024.gross}</td>
-										<td>{sevenPay2024.gross - sixthPay2024.gross}</td>
+										<td>₹. {sixthPay2022.gross}</td>
+										<td>₹. {sevenPay2022.gross}</td>
+										<td>₹. {sixthPay2024.gross}</td>
+										<td>₹. {sevenPay2024.gross}</td>
+										<td>₹. {sevenPay2024.gross - sixthPay2024.gross}</td>
 									</tr>
 								</tbody>
 							</table>
