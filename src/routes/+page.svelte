@@ -1,6 +1,6 @@
 
 <svelte:head>
-  <title>Home Page | Karnataka Govt Orders, Pay Commission, 7th Pay, Pension , salary fixation,Family Pension </title>
+  <title>Home Page | Karnataka 7th Pay Calculator, Karnataka Govt Orders, Pay Commission, 7th Pay, Pension , salary fixation,Family Pension </title>
 </svelte:head>
 <main>
     <div class="card mt-2">

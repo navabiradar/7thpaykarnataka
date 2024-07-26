@@ -34,7 +34,9 @@
 		gross: 0,
 		sxithgross: 0,
 		sixthDA: 0,
-		sixthPayConvert: 0
+		sixthPayConvert: 0,
+		incrementJanJul2023:0,
+		incrementJanJul2024:0,
 	};
 
 	let sixthPay2022 = {
@@ -296,27 +298,35 @@
 			if (newPayCalculated >= payScaleData[Number(formValues.payScale) - 1].max) {
 				formValues.newPay = payScaleData[Number(formValues.payScale) - 1].max;
 				formValues.newPayAug = scaleExtract[scaleExtract.indexOf(formValues.newPay) + 2];
+				console.log(1);
 				return true;
 			} else if (newPayCalculated <= payScaleData[Number(formValues.payScale) - 1].min) {
 				formValues.newPay = payScaleData[Number(formValues.payScale) - 1].min;
-				formValues.newPayAug = formValues.newPay;
+				formValues.newPayAug = scaleExtract[scaleExtract.indexOf(formValues.newPay) + 2];
+				console.log(2);
 				return true;
 			} else if (ele > newPayCalculated) {
 				if (ele > payScaleData[Number(formValues.payScale) - 1].max) {
 					formValues.newPay = payScaleData[Number(formValues.payScale) - 1].max;
 					formValues.newPayAug = formValues.newPay;
 					formValues.newPayAug = scaleExtract[index + 2];
+					console.log(3);
 				} else if (ele < payScaleData[Number(formValues.payScale) - 1].min) {
 					formValues.newPay = payScaleData[Number(formValues.payScale) - 1].min;
 					formValues.newPayAug = formValues.newPay;
 					formValues.newPayAug = scaleExtract[index + 2];
+					console.log(4);
 				} else {
 					formValues.newPay = ele;
 					formValues.newPayAug = scaleExtract[index + 2];
+					console.log(5);
 				}
 				return true;
 			}
 		});
+
+
+
 
 		formValues.seventhpayScale = payScaleData[Number(formValues.payScale) - 1].seventhPay;
 		formValues.sixthpayScale = payScaleData[Number(formValues.payScale) - 1].sixthPay;
@@ -332,6 +342,11 @@
 			Math.round((formValues.presentPay * oldHraRates[tempHRA]) / 100) +
 			mediAll +
 			Math.round((formValues.presentPay * 17) / 100);
+
+		formValues.incrementJanJul2023 = scaleExtract[scaleExtract.indexOf(formValues.newPay)+1] ;
+		formValues.incrementJanJul2024 = scaleExtract[scaleExtract.indexOf(formValues.newPay)+2] ;
+
+
 
 		sixthPay2024.basicPay = formValues.presentPay;
 		sixthPay2022.basicPay = formValues.oldPay;
@@ -382,7 +397,7 @@
 </script>
 
 <svelte:head>
-	<title>7th Pay Salary Fixation Karnataka Government , Basic Salary , Gross Salary</title>
+	<title>Karnataka 7th Pay Calculator, Salary Fixation Karnataka Government , Basic Salary , Gross Salary, Increment</title>
 </svelte:head>
 
 <main>
@@ -418,7 +433,7 @@
 								bind:value={formValues.presentPay}
 								placeholder="Curren Basic Pay"
 							/>
-							<small class="form-hint"> ಈಗಿನ ಮೂಲ ವೇತನವನ್ನು ಸರಿಯಾಗಿ ನಮೂದಿಸಿ. </small>
+							<small class="form-hint">01.07.2024 ಕ್ಕೆ  ಮೂಲ ವೇತನವನ್ನು ನಮೂದಿಸಿ. </small>
 						</div>
 					</div>
 					<div class="row">
@@ -484,8 +499,28 @@
 						</table>
 					</div>
 					<div class="hr-text">
-						<span>Comparision of New Pay and Old Pay / ಹಳೆಯ ಮತ್ತು ಹೊಸ ವೇತನ</span>
+						<span>Increment on 2023 & 2024 / ಕಾಲಿಕ ವೇತನ ಬಡ್ತಿ 2023 & 2024 </span>
 					</div>
+					<div class="table-responsive">
+						<table
+							  class="table table-vcenter table-bordered table-wrap">
+						  <thead>
+							<tr>
+							  <th>7th Pay As on 01.07.2022 / 7ನೇ ವೇತನ 01.07.2022 </th>
+							  <th>ಕಾಲಿಕ ವೇತನ ಬಡ್ತಿ Jan/Jul 2023 </th>
+							  <th>ಕಾಲಿಕ ವೇತನ ಬಡ್ತಿ Jan/Jul 2024 </th>
+							  
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td>{formValues.newPay}</td>
+							  <td>{formValues.incrementJanJul2023}</td>
+							  <td>{formValues.incrementJanJul2024}</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
 					<!-- <div class="table-responsive">
               <table
                     class="table table-vcenter table-bordered table-wrap">
@@ -564,6 +599,9 @@
                 </tbody>
               </table>
             </div> -->
+			<div class="hr-text">
+				<span>Comparision of New Pay and Old Pay / ಹಳೆಯ ಮತ್ತು ಹೊಸ ವೇತನ</span>
+			</div>
 					<div class="col-12">
 						<div class="table-responsive">
 							<table class="table table-vcenter table-bordered table-wrap">
