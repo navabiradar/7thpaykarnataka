@@ -56,6 +56,16 @@ input[type=number]::-webkit-outer-spin-button {
                       </span>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/NormalPensionCalculator">
+                      <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/brand-figma -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M15 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path><path d="M6 3m0 3a3 3 0 0 1 3 -3h6a3 3 0 0 1 3 3v0a3 3 0 0 1 -3 3h-6a3 3 0 0 1 -3 -3z"></path><path d="M9 9a3 3 0 0 0 0 6h3m-3 0a3 3 0 1 0 3 3v-15"></path></svg>
+                      </span>
+                      <span class="nav-link-title">
+                        Pension Calculator 
+                      </span>
+                    </a>
+                  </li>
                   
                   <li class="nav-item">
                     <a class="nav-link" href="/7thPaySalaryCalculation">
@@ -87,7 +97,6 @@ input[type=number]::-webkit-outer-spin-button {
                       </span>
                     </a>
                   </li>
-                 
                 </ul>
               </div>
              

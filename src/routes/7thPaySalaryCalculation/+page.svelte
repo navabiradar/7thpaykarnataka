@@ -397,7 +397,9 @@
 </script>
 
 <svelte:head>
-	<title>Karnataka 7th Pay Calculator, Salary Fixation Karnataka Government , Basic Salary , Gross Salary, Increment</title>
+	<title>Karnataka 7th Pay Commission Salary Calculator - For Government of Karnataka Employees</title>
+	<meta name="description" content="Quickly calculate your salary as per the 7th Pay Commission rules for Karnataka government employees. Get accurate estimates of basic pay, allowances, and deductions. Easy-to-use salary calculator for Karnataka state government staff.">
+
 </svelte:head>
 
 <main>
