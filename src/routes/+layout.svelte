@@ -122,10 +122,10 @@ input[type=number]::-webkit-outer-spin-button {
         </div>
 
             
-            <slot></slot>
+        <slot></slot>
 
-            <div class="row">
-              <div class="col-3">
+        <div class="row">
+              <div class="col">
                 <div class=" card  mt-2 ">
                   <a href="https://t.me/ksgesangh">
                   <div class="card-body">
@@ -135,20 +135,13 @@ input[type=number]::-webkit-outer-spin-button {
                 </a>
                 </div>
               </div>
-              <div class="col-3">
-                <div class="  card mt-2 ">
-                <div class="card-header">
-                  <h3 class="card-title">Dearness Allowance Orders /  ತುಟ್ಟಿ ಭತ್ಯೆ ಆದೇಶಗಳು </h3>
-                </div>
-                  <div class="card-body">
-                    
-                    
-                  </div>
-                </div>
-              </div>
-          </div>
+              
         </div>
       </div>
-      
     </div>
   </div>
+</div>
+      
+   
+ 
+  

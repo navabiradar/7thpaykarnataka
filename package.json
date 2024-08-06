@@ -28,7 +28,7 @@
 	"dependencies": {
 		"@tabler/core": "^1.0.0-beta20",
 		"date-fns": "^3.6.0",
-		"pdfobject": "^2.3.0",
-		"print-js": "^1.6.0"
+		"print-js": "^1.6.0",
+		"svelte-pdf": "^1.0.20"
 	}
 }
