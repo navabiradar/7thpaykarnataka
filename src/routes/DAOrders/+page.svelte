@@ -3,6 +3,13 @@
     import {daorder} from "./DaOrder";
 </script>
 
+<svelte:head>
+    <title>Karnataka Government DA Orders,UGC DA Orders, AICTE DA Orders, Dearness Allowance, Employee Salary Hike</title>
+    <meta name="description" content="Find the latest Karnataka Government DA orders and updates. Stay informed about dearness allowance hikes for government employees in Karnataka. Check eligibility, notification dates, and implementation details.">
+
+
+</svelte:head>
+
 
 <main>
     <div class="card">
