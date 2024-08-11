@@ -6,7 +6,7 @@
 <svelte:head>
     <meta name="description" content="Karnataka Govt Orders , Karnataka 7th Pay, Pay Fixation, Pension Fixation, Family Pension Fixation">
     <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
-    <!-- <script async="async" data-cfasync="false" src="//pl24002562.highratecpm.com/e26d5f959ea567ec59a2f38dbb44ffa2/invoke.js"></script> -->
+    <script async="async" data-cfasync="false" src="//pl24002562.highratecpm.com/e26d5f959ea567ec59a2f38dbb44ffa2/invoke.js"></script>
     <style>
         input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
