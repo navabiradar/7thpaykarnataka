@@ -17,7 +17,8 @@
            <span class="text-center"> Arrears Calculator</span> 
         </div>
         <div class="card-body">
-            <h1>Coming Soon</h1>
+            <p class="display-6">Coming Soon</p>
+              
         </div>
     </div>
 </main>

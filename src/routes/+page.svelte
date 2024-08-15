@@ -18,7 +18,6 @@
           <h1 class=""><a href="/DAOrders">ಕೇಂದ್ರ/ಯು.ಜಿ.ಸಿ ತುಟ್ಟಿ ಭತ್ಯೆ ಆದೇಶಗಳು</a></h1>
         </div>
       </div>
-
     </div>
   </div>
   <div class="row row-cards">
