@@ -25,7 +25,7 @@
       
       <div class="card  mt-2">
         <div class="card-body">
-          <h1 class=""><a href="/DAarrears">DA and Arrears Calculator</a></h1>
+          <h1 class=""><a href="/">DA and Arrears Calculator</a></h1>
         </div>
       </div>
     </div>
@@ -33,14 +33,14 @@
       
       <div class="card  mt-2">
         <div class="card-body">
-          <h1 class=""><a href="/IncomeTaxTDSCalculator">Income Tax/TDS Calculator</a></h1>
+          <h1 class=""><a href="/">Income Tax/TDS Calculator</a></h1>
         </div>
       </div>
     </div>
     <div class="col-lg-4 col-md-4">
       <div class="card  mt-2">
         <div class="card-body">
-          <h1 class=""><a href="/ArrearsCalculator">Arrears Calculator</a></h1>
+          <h1 class=""><a href="/">Arrears Calculator</a></h1>
         </div>
       </div>
 
