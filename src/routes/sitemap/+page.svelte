@@ -8,7 +8,7 @@
             <a href="/">Karnataka State Government Employees Vedike</a>
         </li>
         <li>
-            <a href="/DAorders">Karnataka State Employees Dearness Allowance Orders</a>
+            <a href="/DAOrders">Karnataka State Employees Dearness Allowance Orders</a>
         </li>
         <li>
             <a href="/NormalPensionCalculator">Pension Calculator</a>
