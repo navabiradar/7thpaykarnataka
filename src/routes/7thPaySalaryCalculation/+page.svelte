@@ -3,7 +3,7 @@
 
 	let da = 31;
 	let fixationRate = 27.5;
-	let newDA = 8.75;
+	let newDA = 8.5;
 	let oldDAJan = 42.5;
 
 	let oldHraRates = {
